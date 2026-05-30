@@ -286,13 +286,13 @@ def generate_html(all_data, grand_sold, grand_sellable, updated_at, sold_24h=Non
     <title>{event_name} - Seat Report</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(180deg, #e8f4f8 0%, #f5f0eb 100%);
-            color: #2c3e50;
+            background: linear-gradient(180deg, #c8d8a0 0%, #a8c070 100%);
+            color: #1e2d0a;
             min-height: 100vh;
             padding: 20px;
         }}
@@ -302,29 +302,31 @@ def generate_html(all_data, grand_sold, grand_sellable, updated_at, sold_24h=Non
             padding: 35px 0 10px;
         }}
         .header h1 {{
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Uncial Antiqua', Georgia, serif;
             font-size: 2.8em;
-            font-weight: 900;
-            color: #1a3c5e;
+            font-weight: 400;
+            color: #2d5a0e;
             margin-bottom: 4px;
-            letter-spacing: -0.5px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0px #a8c070, 0 0 20px rgba(45,90,14,0.3);
         }}
         .header .subtitle {{
-            color: #7f8c8d;
+            color: #5a7a30;
             font-size: 0.95em;
             font-weight: 500;
             letter-spacing: 2px;
             text-transform: uppercase;
         }}
         .summary {{
-            background: linear-gradient(135deg, #1a3c5e, #2e86de);
+            background: linear-gradient(135deg, #2d5a0e, #4a7c1e);
             border-radius: 18px;
             padding: 28px;
             margin: 24px 0 30px;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            box-shadow: 0 8px 30px rgba(26, 60, 94, 0.25);
+            box-shadow: 0 8px 30px rgba(45, 90, 14, 0.4);
+            border: 2px solid #8b6914;
         }}
         .summary-item {{ text-align: center; }}
         .summary-item .big {{
@@ -332,35 +334,35 @@ def generate_html(all_data, grand_sold, grand_sellable, updated_at, sold_24h=Non
             font-weight: 700;
             color: #fff;
         }}
-        .summary-item .big.pct {{ color: #f4a7b9; }}
+        .summary-item .big.pct {{ color: #f0d060; }}
         .summary-item .label {{
             font-size: 0.8em;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
             margin-top: 4px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }}
         .cards {{ display: flex; flex-direction: column; gap: 14px; }}
         .card {{
-            background: #ffffff;
+            background: #f0f5e0;
             border-radius: 14px;
             padding: 20px 22px;
-            border: 1px solid #d5e8f0;
+            border: 1px solid #8fb050;
             transition: transform 0.15s, box-shadow 0.15s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 8px rgba(45,90,14,0.1);
         }}
-        .card:hover {{ transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26, 60, 94, 0.1); }}
+        .card:hover {{ transform: translateY(-2px); box-shadow: 0 6px 20px rgba(45,90,14,0.2); }}
         .card-header {{
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
         }}
-        .card-date {{ font-size: 1.1em; font-weight: 600; color: #1a3c5e; }}
-        .card-pct {{ font-size: 1.4em; font-weight: 700; color: #1a3c5e; }}
+        .card-date {{ font-size: 1.1em; font-weight: 600; color: #2d5a0e; }}
+        .card-pct {{ font-size: 1.4em; font-weight: 700; color: #2d5a0e; }}
         .progress-bar {{
             height: 7px;
-            background: #e8f4f8;
+            background: #c8d8a0;
             border-radius: 4px;
             overflow: hidden;
             margin-bottom: 14px;
@@ -376,10 +378,10 @@ def generate_html(all_data, grand_sold, grand_sellable, updated_at, sold_24h=Non
             margin-bottom: 10px;
         }}
         .stat {{ text-align: center; }}
-        .stat-num {{ font-size: 1.3em; font-weight: 700; color: #1a3c5e; }}
-        .stat-label {{ font-size: 0.72em; color: #7f8c8d; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; }}
+        .stat-num {{ font-size: 1.3em; font-weight: 700; color: #2d5a0e; }}
+        .stat-label {{ font-size: 0.72em; color: #5a7a30; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; }}
         .types-detail {{
-            border-top: 1px solid #e8f4f8;
+            border-top: 1px solid #b8d080;
             padding-top: 10px;
             margin-top: 4px;
         }}
@@ -390,15 +392,15 @@ def generate_html(all_data, grand_sold, grand_sellable, updated_at, sold_24h=Non
             padding: 4px 0;
             font-size: 0.85em;
         }}
-        .type-name {{ color: #5a7a94; min-width: 120px; font-weight: 500; }}
-        .type-stats {{ color: #2c3e50; flex: 1; text-align: center; }}
-        .type-avail {{ color: #7f8c8d; min-width: 70px; text-align: right; }}
+        .type-name {{ color: #4a6a20; min-width: 120px; font-weight: 500; }}
+        .type-stats {{ color: #1e2d0a; flex: 1; text-align: center; }}
+        .type-avail {{ color: #5a7a30; min-width: 70px; text-align: right; }}
         .past-section-header {{
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 18px 4px 6px;
-            border-top: 1px solid #dde;
+            border-top: 1px solid #8fb050;
             margin-top: 8px;
         }}
         .past-section-title {{
@@ -406,39 +408,39 @@ def generate_html(all_data, grand_sold, grand_sellable, updated_at, sold_24h=Non
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: #aaa;
+            color: #7a9a50;
         }}
         .past-section-totals {{
             font-size: 0.82em;
-            color: #aaa;
+            color: #7a9a50;
             font-weight: 500;
         }}
         .card-past {{
-            background: #f4f4f4;
-            border-color: #e0e0e0;
+            background: #e0e8c8;
+            border-color: #b0c880;
             box-shadow: none;
         }}
         .card-past:hover {{ transform: none; box-shadow: none; }}
-        .card-past .card-date {{ color: #999; font-weight: 500; }}
-        .card-past .card-pct {{ color: #aaa; font-size: 1.1em; }}
+        .card-past .card-date {{ color: #7a9a50; font-weight: 500; }}
+        .card-past .card-pct {{ color: #8aaa60; font-size: 1.1em; }}
         .card-stats-past {{
             display: flex;
             gap: 20px;
             font-size: 0.85em;
-            color: #aaa;
+            color: #7a9a50;
             margin-top: 2px;
         }}
         .badge-waiting {{
-            background: #ffeaa7;
-            color: #6d4c00;
+            background: #8b6914;
+            color: #fff8e0;
             padding: 1px 6px;
             border-radius: 8px;
             font-size: 0.8em;
             font-weight: 600;
         }}
         .badge-24h {{
-            background: #d4efdf;
-            color: #1a6b3c;
+            background: #4a7c1e;
+            color: #e0f0b0;
             padding: 2px 8px;
             border-radius: 8px;
             font-size: 0.7em;
@@ -449,7 +451,7 @@ def generate_html(all_data, grand_sold, grand_sellable, updated_at, sold_24h=Non
         .footer {{
             text-align: center;
             padding: 30px 0 10px;
-            color: #95a5a6;
+            color: #5a7a30;
             font-size: 0.8em;
         }}
         @media (max-width: 500px) {{
